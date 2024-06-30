@@ -1,35 +1,41 @@
 import time
-
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from time import sleep
+from selenium.webdriver.chromium import service
 
 driver = webdriver.Chrome()
-driver.implicitly_wait(10)
+print(driver.service.path)
+driver.implicitly_wait(60)
 driver.maximize_window()
-driver.get('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+driver.get('https://testautomationpractice.blogspot.com/')
 
 #           Main Commands to work with window switching
 #  driver.switch_to.window(IdOfWindow)  need to pass Window ID
 #  driver.current_window_handles    Return ID of current window as a String
 #  driver.window_handles   Return list of Window IDs, they may be not sorted
 
-# MainTab = driver.current_window_handle
-# print(MainTab)
+# driver.find_element(By.XPATH, '//input[contains(@class, "wikipedia-search-input")]').send_keys('Selenium')
+driver.find_element(By.XPATH, '//input[@id="Wikipedia1_wikipedia-search-input"]').send_keys('Selenium')
+driver.find_element(By.XPATH, '//input[contains(@class, "wikipedia-search-button")]').click()
+links = driver.find_elements(By.XPATH, '//div[@class="wikipedia-search-results"]//a')
 
-link = driver.find_element(By.LINK_TEXT, 'OrangeHRM, Inc')
-link.click()
-time.sleep(3)
-link.click()
-time.sleep(3)
-link.click()
+for link in links:
+    link.click()
 
-windowsIds = driver.window_handles
+allTabs = driver.window_handles
+print(allTabs)
 
-#           Close specific browser page
-for windowID in windowsIds:
+# for tab in allTabs:
+#     driver.switch_to.window(tab)
+#     print(tab, driver.title)
+#     driver.close()
+#     time.sleep(5)
+
+
+          # Close specific browser page
+for windowID in allTabs:
     driver.switch_to.window(windowID)
-    if driver.title == 'Human Resources Management Software | OrangeHRM':
+    if driver.title == 'Selenium in biology - Wikipedia':
         driver.close()
         time.sleep(3)
 
