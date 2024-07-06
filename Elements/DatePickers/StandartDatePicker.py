@@ -1,5 +1,4 @@
 import time
-
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
@@ -14,7 +13,7 @@ DatePicker.click()
 days = driver.find_elements(By.XPATH, '//td/a')
 
 
-yr = '2015'
+yr = '2020'
 mon = 'March'
 day = '15'
 
@@ -28,10 +27,11 @@ while True:
 
     if month == mon and year == yr:
         break
-    elif int(year) >= int(yr) and month != mon:
-        PrevButton.click()
+    # elif int(year) >= int(yr) and month != mon:
+    #     PrevButton.click()
     else:
-        NextButton.click()
+        PrevButton.click()
+        # NextButton.click()
 
 
 links = driver.find_elements(By.XPATH, '//table[@class="ui-datepicker-calendar"]/tbody//a')
