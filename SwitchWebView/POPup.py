@@ -8,6 +8,7 @@ driver = webdriver.Chrome()
 driver.maximize_window()
 login = 'admin'
 password = 'admin'
+
 # Когда у нас есть всплывающее окно авторизации мы передаём логин и пароль в ссылке.
 # Пример ниже без передачи логина и пароля, откроется всплывающее окно ввода логин и пароль
 # driver.get("https://@the-internet.herokuapp.com/basic_auth") # Откроется окно ввода логина и пароля

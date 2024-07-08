@@ -12,7 +12,7 @@ driver.get('https://the-internet.herokuapp.com/javascript_alerts')
 text = "Hello World"
 driver.find_element(By.XPATH, '//button[text()= "Click for JS Prompt"]').click()
 
-# Main commands to work wi Alerts
+# Main commands to work with Alerts
 # alert = driver.switch_to.alert  Switches to alert window and initiolize the result ro variable
 # alert.text  Return Title of Alert
 # alert.accept  Press OK Button on alert window
