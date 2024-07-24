@@ -7,7 +7,7 @@ driver = webdriver.Firefox()
 driver.implicitly_wait(10)
 driver.maximize_window()
 # driver.get('https://practice.expandtesting.com/upload')
-# file_path = 'C:\\Projects\\Python_auto_practice_SDET\\Actions\\file-example_PDF_500_kB.pdf'
+# file_path = 'C:\\Projects\\Python_auto_practice_SDET\\Actions\\filename.extension'
 # fileSelector = driver.find_element(By.XPATH, '//input[@id="fileInput"]')
 # fileSelector.send_keys(file_path)
 #
