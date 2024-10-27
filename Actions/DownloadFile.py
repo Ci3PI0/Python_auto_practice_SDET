@@ -12,11 +12,20 @@ def chrome():
     return webdriver.Chrome(options = opt)
     # return driver
 
+def headless_chrome():
+    preferences = {"download.default_directory": location}
+    option = webdriver.ChromeOptions()
+    # option.headless = True
+    option.add_argument('--headless=new')
+    option.add_experimental_option("prefs", preferences)
+    driver = webdriver.Chrome(options=option)
+    # web_driver.maximize_window()
+    return driver
 
 def fireFox():
     preferences = {"download.default_directory": location}
     opt = webdriver.FirefoxOptions()
-    opt.set_preference("browser.download.folderList",2) # 0-Desctop,1-default location, 2-desired location
+    opt.set_preference("browser.download.folderList",2)  # 0-Desctop,1-default location, 2-desired location
     opt.set_preference("browser.download.dir", location)
     return webdriver.Firefox(options=opt)
 
@@ -29,8 +38,8 @@ def edge():
     return webdriver.Edge(options= options)
 
 
-driver = chrome()
-driver.implicitly_wait(10)
+driver = headless_chrome()
+# driver.implicitly_wait(10)
 
 #Edge Specific options
 if driver.name == "MicrosoftEdge":
@@ -40,9 +49,9 @@ if driver.name == "MicrosoftEdge":
         ''')
     toggle.click()
 
-driver.maximize_window()
-# driver.get('https://file-examples.com/index.php/sample-documents-download/sample-doc-download/')
-driver.get('https://file-examples.com/index.php/sample-audio-files/sample-mp3-download/')
+# driver.maximize_window()
+driver.get('https://file-examples.com/index.php/sample-documents-download/sample-doc-download/')
+# driver.get('https://file-examples.com/index.php/sample-audio-files/sample-mp3-download/')
 downloadBtn = driver.find_element(By.XPATH, '//table[@id="table-files"]/tbody/tr[3]//a')
 
 # driver.execute_script('arguments[0].scrollIntoView()', downloadBtn)
